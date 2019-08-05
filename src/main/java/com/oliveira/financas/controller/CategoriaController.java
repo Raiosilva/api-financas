@@ -16,8 +16,8 @@ public class CategoriaController {
 	@RequestMapping(method=RequestMethod.GET)
 	public List<Categoria> listar() {
 		
-		Categoria cat1 = new Categoria(1, "Geladeira");
-		Categoria cat2 = new Categoria(2, "Computador");
+		Categoria cat1 = new Categoria(1, "Eletrodomestido");
+		Categoria cat2 = new Categoria(2, "Informatica");
 		
 		List<Categoria> lista = new ArrayList<>();
 		lista.add(cat1);
