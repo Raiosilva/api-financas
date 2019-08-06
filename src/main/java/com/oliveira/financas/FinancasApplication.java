@@ -13,6 +13,7 @@ import com.oliveira.financas.model.Cidade;
 import com.oliveira.financas.model.Cliente;
 import com.oliveira.financas.model.Endereco;
 import com.oliveira.financas.model.Estado;
+import com.oliveira.financas.model.ItemPedido;
 import com.oliveira.financas.model.Pagamento;
 import com.oliveira.financas.model.PagamentoComBoleto;
 import com.oliveira.financas.model.PagamentoComCartao;
@@ -25,6 +26,7 @@ import com.oliveira.financas.repositories.CidadeRepository;
 import com.oliveira.financas.repositories.ClienteRepository;
 import com.oliveira.financas.repositories.EnderecoRepository;
 import com.oliveira.financas.repositories.EstadoRepository;
+import com.oliveira.financas.repositories.ItemPedidoRepository;
 import com.oliveira.financas.repositories.PagamentoRepository;
 import com.oliveira.financas.repositories.PedidoRepository;
 import com.oliveira.financas.repositories.ProdutoRepository;
@@ -55,6 +57,9 @@ public class FinancasApplication implements CommandLineRunner {
 	
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	
 	public static void main(String[] args) {
@@ -123,7 +128,18 @@ public class FinancasApplication implements CommandLineRunner {
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
 		
-	
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 2000.00);
+		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2, 80.00);
+		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, 800.00);
+		
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		p3.getItens().addAll(Arrays.asList(ip2));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
 	}
 
 	
