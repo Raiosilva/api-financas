@@ -35,7 +35,7 @@ import com.oliveira.financas.repositories.ProdutoRepository;
 public class FinancasApplication implements CommandLineRunner {
 
 	@Autowired
-	CategoriaRepository categoriaRepository;
+	private CategoriaRepository categoriaRepository;
 	
 	@Autowired
 	private ProdutoRepository produtoRepository; 
