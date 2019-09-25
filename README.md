@@ -1,6 +1,6 @@
 # api-financas
 
-Projeto final desenvolvido no treinamento JAVA pela Solutis.
+
 
 Dependecias inicias:
   JAVA: 1.8
